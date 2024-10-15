@@ -14,29 +14,30 @@ namespace CatchUpPlatform.API.Shared.Infrastructure.Persistence.EFC.Repositories
             _context = context;
         }
 
-        async Task AddAsync(TEntity entity)
+        async Task IBaseRepository<TEntity>.AddAsync(TEntity entity)
         {
             await _context.Set<TEntity>().AddAsync(entity);
         }
 
-        void Update(TEntity entity)
+        void IBaseRepository<TEntity>.Update(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        void Remove(TEntity entity)
+        void IBaseRepository<TEntity>.Remove(TEntity entity)
         {
             _context.Set<TEntity>().Remove(entity);
         }
 
-        async Task<TEntity?> FindByAsync(int id)
+        async Task<TEntity?> IBaseRepository<TEntity>.FindByAsync(int id)
         {
             return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        async Task<IEnumerable<TEntity>> ListAsync()
+        async Task<IEnumerable<TEntity>> IBaseRepository<TEntity>.ListAsync()
         {   
             return await _context.Set<TEntity>().ToListAsync();
         }
+
     }
 }

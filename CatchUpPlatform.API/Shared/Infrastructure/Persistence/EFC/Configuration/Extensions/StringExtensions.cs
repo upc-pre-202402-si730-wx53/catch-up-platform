@@ -1,4 +1,6 @@
 ﻿
+using Humanizer;
+
 namespace CatchUpPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions
 {
     public static class StringExtensions
@@ -6,6 +8,11 @@ namespace CatchUpPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuratio
         public static string ToSnakeCase(this string text)
         {
             return new string(Convert(text.GetEnumerator()).ToArray());
+        }
+
+        public static string ToPlural(this string text)
+        {
+            return text.Pluralize();
         }
 
         static IEnumerable<char> Convert(CharEnumerator e)

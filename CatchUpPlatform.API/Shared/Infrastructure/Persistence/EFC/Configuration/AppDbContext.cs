@@ -17,7 +17,6 @@ namespace CatchUpPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuratio
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<FavoriteSource>().ToTable("FavoriteSources");
             modelBuilder.Entity<FavoriteSource>().HasKey(f => f.Id);
             modelBuilder.Entity<FavoriteSource>().Property(f => f.Id).IsRequired().ValueGeneratedOnAdd();
             modelBuilder.Entity<FavoriteSource>().Property(f => f.SourceId).IsRequired();
