@@ -1,4 +1,6 @@
-﻿namespace CatchUpPlatform.API.News.Domain.Model.Aggregates
+﻿using CatchUpPlatform.API.News.Domain.Model.Commands;
+
+namespace CatchUpPlatform.API.News.Domain.Model.Aggregates
 {
     /// FavoriteSource Aggregate
     /// <summary>
@@ -14,6 +16,18 @@
         {
             this.NewsApiKey = string.Empty;
             this.SourceId = string.Empty;
+        }
+
+        public FavoriteSource(string newsApiKey, string sourceId)
+        {
+            this.NewsApiKey = newsApiKey;
+            this.SourceId = sourceId;
+        }
+
+        public FavoriteSource(CreateFavoriteSouceCommand command)
+        {
+            this.NewsApiKey = command.NewsApiKey;
+            this.SourceId = command.SourceId;
         }
     }
 }
