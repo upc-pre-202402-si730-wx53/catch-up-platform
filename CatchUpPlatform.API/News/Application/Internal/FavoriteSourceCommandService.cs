@@ -20,6 +20,8 @@ namespace CatchUpPlatform.API.News.Application.Internal
     /// <see cref="IUnitOfWork">IUnitOfWork</see>
     public class FavoriteSourceCommandService(IFavoriteSourceRepository favoriteSourceRepository, IUnitOfWork unitOfWork) : IFavoriteSourceCommandService
     {
+
+        /// <inheritdoc />
         public async Task<FavoriteSource?> Handle(CreateFavoriteSouceCommand command)
         {
             var favoriteSource = await favoriteSourceRepository.FindByNewsApiKeyAndSourceIdAsync(command.NewsApiKey, command.SourceId);

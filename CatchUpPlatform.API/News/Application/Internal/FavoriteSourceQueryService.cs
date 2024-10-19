@@ -1,6 +1,8 @@
 ﻿using CatchUpPlatform.API.News.Domain.Model.Aggregates;
 using CatchUpPlatform.API.News.Domain.Model.Queries;
+using CatchUpPlatform.API.News.Domain.Repositories;
 using CatchUpPlatform.API.News.Domain.Services;
+using CatchUpPlatform.API.Shared.Domain.Repositories;
 
 namespace CatchUpPlatform.API.News.Application.Internal
 {
@@ -11,16 +13,18 @@ namespace CatchUpPlatform.API.News.Application.Internal
     ///     This class implements the basic operations for a favorite source query service.
     /// </remarks>
     /// <param name="favoriteSourceRepository">The FavoriteSourceRepository instance.</param>
-    public class FavoriteSourceQueryService: IFavoriteSourceQueryService
+    public class FavoriteSourceQueryService(IFavoriteSourceRepository favoriteSourceRepository, IUnitOfWork unitOfWork: IFavoriteSourceQueryService
     {
-        public Task<FavoriteSource?> Handle(GetFavoriteSourceByIdQuery query)
+        /// <inheritdoc />
+        public async Task<FavoriteSource?> Handle(GetFavoriteSourceByIdQuery query)
         {
-            throw new NotImplementedException();
+            return await favoriteSourceRepository.FindByIdAsync(query.Id);
         }
 
-        public Task<FavoriteSource?> Handle(GetFavoriteSourceByNewsApiKeyAndSourceIdQuery query)
+        /// <inheritdoc />
+        public async Task<FavoriteSource?> Handle(GetFavoriteSourceByNewsApiKeyAndSourceIdQuery query)
         {
-            throw new NotImplementedException();
+           return await favoriteSourceRepository.FindByNewsApiKeyAndSourceIdAsync(query.NewsApiKey, query.SourceId);
         }
     }
 }
