@@ -4,7 +4,7 @@ namespace CatchUpPlatform.API.News.Domain.Model.Aggregates
 {
     /// FavoriteSource Aggregate
     /// <summary>
-    /// This class represents the FavoriteSource aggregate. It is used to store the favorite sources of a user.
+    ///     This class represents the FavoriteSource aggregate. It is used to store the favorite sources of a user.
     /// </summary>
     public class FavoriteSource
     {
@@ -24,6 +24,12 @@ namespace CatchUpPlatform.API.News.Domain.Model.Aggregates
             this.SourceId = sourceId;
         }
 
+        ///<summary>
+        ///    Constructor for the FavoriteSource aggregate.
+        ///</summary>
+        ///<remarks>
+        ///    The constructor is the command handler for the CreateFavoriteSourceCommand.
+        ///</remarks>
         public FavoriteSource(CreateFavoriteSouceCommand command)
         {
             this.NewsApiKey = command.NewsApiKey;
