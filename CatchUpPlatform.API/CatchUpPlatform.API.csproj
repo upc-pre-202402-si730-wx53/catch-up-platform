@@ -10,7 +10,6 @@
 		<Folder Include="News\Domain\Model\Entities\" />
 		<Folder Include="News\Domain\Model\Valueobjects\" />
 		<Folder Include="News\Infrastructure\" />
-		<Folder Include="News\Interfaces\" />
 	</ItemGroup>
 
 	<ItemGroup>
